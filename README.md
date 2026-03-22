@@ -13,7 +13,7 @@ LinkedIn Speak is a satirical translation tool that converts plain English into 
 - Plain English → LinkedIn Jargon
 - LinkedIn Jargon → Plain English
 
-🎚️ **5 Intensity Levels** (Plain to LinkedIn only)
+🎚️ **5 Intensity Levels** (Plain English to LinkedIn only)
 
 - **Subtle**: Professional polish
 - **Cringe**: Buzzwords and forced enthusiasm
@@ -46,7 +46,7 @@ LinkedIn Speak is a satirical translation tool that converts plain English into 
 ## Prerequisites
 
 - **Node.js** 18+ (with npm or yarn)
-- **Anthropic API Key** (free tier available at [console.anthropic.com](https://console.anthropic.com/account/keys))
+- **Anthropic API Key** (available at [console.anthropic.com](https://console.anthropic.com/account/keys))
 
 ---
 
@@ -55,7 +55,7 @@ LinkedIn Speak is a satirical translation tool that converts plain English into 
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/yourusername/linkedin-speak.git
+git clone https://github.com/Felix-Chang/linkedin-translator.git
 cd linkedin-speak
 ```
 
@@ -169,4 +169,4 @@ Never commit `.env.local` or your API key to version control.
 
 ---
 
-Made with the help of Claude.
+Made with the help of Claude Code.
