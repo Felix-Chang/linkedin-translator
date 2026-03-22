@@ -2,7 +2,7 @@
 
 **Translate professional thoughts into elite corporate jargon. Or reverse the damage.**
 
-LinkedIn Speak is a satirical translation tool that converts plain English into absurd LinkedIn corporate jargon—and decodes pretentious corporate speak back to honest English. It's a humorous take on how corporate culture talks about the world.
+LinkedIn Speak is a satirical translation tool that converts plain English into absurd LinkedIn corporate jargon and decodes pretentious corporate speak back to honest English. It's a humorous take on how corporate culture talks about the world.
 
 ---
 
