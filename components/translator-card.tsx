@@ -50,7 +50,7 @@ export function TranslatorCard({
   const isInputValid = inputText.trim().length > 0 && !isOverLimit;
 
   const leftLabel = mode === "plain_to_linkedin" ? "Plain English" : "Corporate Speak";
-  const rightLabel = mode === "plain_to_linkedin" ? "LinkedIn Speak" : "Plain English";
+  const rightLabel = "LinkedIn Lingo";
 
   const handleSwap = () => {
     onModeChange(mode === "plain_to_linkedin" ? "linkedin_to_plain" : "plain_to_linkedin");
@@ -63,13 +63,13 @@ export function TranslatorCard({
   };
 
   return (
-    <div className="w-full max-w-6xl border border-[#e0e0e0] bg-white">
+    <div className="w-full max-w-6xl bg-white rounded-lg shadow-sm">
       {/* Language/Mode Headers */}
-      <div className="flex items-center border-b border-[#e0e0e0] bg-white">
+      <div className="flex items-center border-b border-[#e0e0e0] bg-white rounded-t-lg">
         <div className="flex-1 px-6 py-4">
           <button
             onClick={() => onModeChange("plain_to_linkedin")}
-            className={`text-sm font-medium pb-2 border-b-2 transition-colors ${
+            className={`text-sm font-medium pb-2 border-b-2 transition-colors cursor-pointer ${
               mode === "plain_to_linkedin"
                 ? "text-[#0077b5] border-[#0077b5]"
                 : "text-[#6b6b6b] border-transparent hover:text-[#1b1b1b]"
@@ -82,10 +82,10 @@ export function TranslatorCard({
         <div className="px-2">
           <button
             onClick={handleSwap}
-            className="p-2 hover:bg-[#f5f5f5] rounded transition-colors text-[#6b6b6b] hover:text-[#1b1b1b]"
+            className="w-10 h-10 flex items-center justify-center rounded-full bg-white border border-[#e0e0e0] transition-all duration-200 cursor-pointer text-[#6b6b6b] hover:text-[#0077b5] hover:bg-[#f5f5f5] hover:border-[#0077b5]"
             title="Swap languages"
           >
-            ⇄
+            <span className="text-xl leading-none">⇄</span>
           </button>
         </div>
 
@@ -97,7 +97,7 @@ export function TranslatorCard({
       {/* Main Panels */}
       <div className="flex">
         {/* Left Panel: Input */}
-        <div className="flex-1 flex flex-col border-r border-[#e0e0e0]">
+        <div className="flex-1 flex flex-col">
           <textarea
             value={inputText}
             onChange={(e) => onInputChange(e.target.value)}
@@ -106,8 +106,8 @@ export function TranslatorCard({
             style={{ minHeight: "300px" }}
           />
 
-          {/* Input Footer */}
-          <div className="flex items-center justify-between px-6 py-4 border-t border-[#e0e0e0] bg-white">
+          {/* Input Footer - No Border */}
+          <div className="flex items-center justify-between px-6 py-3 bg-white">
             <span className={`text-xs font-medium ${isOverLimit ? "text-red-600" : "text-[#6b6b6b]"}`}>
               {charCount}/3000
             </span>
@@ -116,7 +116,7 @@ export function TranslatorCard({
               disabled={!isInputValid || loading}
               className={`px-4 py-2 text-sm font-medium rounded transition-colors ${
                 isInputValid && !loading
-                  ? "bg-[#0077b5] text-white hover:bg-[#006097]"
+                  ? "bg-[#0077b5] text-white hover:bg-[#006097] cursor-pointer"
                   : "bg-[#e0e0e0] text-[#6b6b6b] cursor-not-allowed"
               }`}
             >
@@ -148,16 +148,25 @@ export function TranslatorCard({
             <div className="flex items-center justify-end gap-2 px-6 py-4 border-t border-[#d0d7e0]">
               <button
                 onClick={onRegenerate}
-                className="px-4 py-2 text-sm font-medium text-[#1b1b1b] border border-[#d0d7e0] rounded hover:bg-white transition-colors"
+                className="px-4 py-2 text-sm font-medium text-[#1b1b1b] border border-[#d0d7e0] rounded hover:bg-white transition-colors cursor-pointer"
                 title="Generate different translation"
               >
                 ↻ Regenerate
               </button>
               <button
                 onClick={handleCopy}
-                className="px-4 py-2 text-sm font-medium text-[#1b1b1b] border border-[#d0d7e0] rounded hover:bg-white transition-colors"
+                className="p-2 text-[#6b6b6b] hover:text-[#1b1b1b] hover:bg-[#f0f4f8] rounded-lg transition-colors cursor-pointer"
+                title="Copy translation"
               >
-                {copied ? "✓ Copied" : "Copy"}
+                {copied ? (
+                  <svg className="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                ) : (
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                  </svg>
+                )}
               </button>
               <button
                 disabled
@@ -171,25 +180,27 @@ export function TranslatorCard({
       </div>
 
       {/* Bottom Section: Examples & Intensity */}
-      <div className="border-t border-[#e0e0e0] bg-white p-6">
+      <div className="bg-white p-6 border-t border-[#e0e0e0] rounded-b-lg">
         <div className="flex flex-col gap-6">
-          {/* Intensity Selector */}
-          <div>
-            <label className="text-xs font-semibold text-[#6b6b6b] uppercase tracking-wide mb-3 block">
-              Intensity Level
-            </label>
-            <select
-              value={intensity}
-              onChange={(e) => onIntensityChange(e.target.value as IntensityLevel)}
-              className="px-4 py-2 text-sm border border-[#e0e0e0] bg-white text-[#1b1b1b] rounded hover:border-[#0077b5] focus:outline-none focus:ring-1 focus:ring-[#0077b5]"
-            >
-              {(Object.entries(INTENSITY_LABELS) as [IntensityLevel, string][]).map(([value, label]) => (
-                <option key={value} value={value}>
-                  {label}
-                </option>
-              ))}
-            </select>
-          </div>
+          {/* Intensity Selector - only show in plain→linkedin mode */}
+          {mode === "plain_to_linkedin" && (
+            <div>
+              <label className="text-xs font-semibold text-[#6b6b6b] uppercase tracking-wide mb-3 block">
+                Intensity Level
+              </label>
+              <select
+                value={intensity}
+                onChange={(e) => onIntensityChange(e.target.value as IntensityLevel)}
+                className="px-4 py-2 text-sm border border-[#e0e0e0] bg-white text-[#1b1b1b] rounded hover:border-[#0077b5] focus:outline-none focus:ring-1 focus:ring-[#0077b5]"
+              >
+                {(Object.entries(INTENSITY_LABELS) as [IntensityLevel, string][]).map(([value, label]) => (
+                  <option key={value} value={value}>
+                    {label}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
 
           {/* Example Chips */}
           <div>

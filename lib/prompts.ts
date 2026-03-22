@@ -2,15 +2,15 @@ import { TranslationMode, IntensityLevel } from "./types";
 
 const INTENSITY_INSTRUCTIONS: Record<IntensityLevel, string> = {
   subtle:
-    "Make minimal changes. Keep it professional and authentic. Just add a touch of corporate polish.",
+    "Add subtle corporate polish. Keep it brief and authentic. 2 short paragraphs, 2-3 sentences each.",
   cringe:
-    "Overdo it. Add corporate buzzwords, emojis, and enthusiasm. Make it slightly awkward and forced.",
+    "Overdo it with buzzwords and emojis 😊. Make it awkward and try-hard. 2 paragraphs, punchy.",
   thought_leader:
-    "Make it sound like inspirational garbage. Use abstract concepts, mention 'journey', 'growth mindset', and paradigm shifts.",
+    "Inspirational garbage. Mention 'journey', 'growth mindset', 'unlock potential'. 2-3 short paragraphs.",
   series_a_founder:
-    "Make it sound like a startup pitch. Use words like 'disrupt', 'pivot', 'traction', 'product-market fit', 'hockey stick growth'.",
+    "Startup pitch vibes. Use 'disrupt', 'pivot', 'traction', 'scale'. Keep it concise. 2-3 paragraphs.",
   fortune_500_keynote:
-    "Make it sound like a corporate keynote speech. Use abstract jargon, synergy, leverage, paradigm, ecosystem, seamless integration.",
+    "Corporate keynote tone. Use 'synergy', 'paradigm shift', 'ecosystem'. Grandiose but brief. 2-3 paragraphs.",
 };
 
 export function buildTranslationPrompt(
@@ -18,21 +18,32 @@ export function buildTranslationPrompt(
   mode: TranslationMode,
   intensity: IntensityLevel,
 ): string {
-  const modeInstruction =
-    mode === "plain_to_linkedin"
-      ? "Translate the following plain English text into exaggerated LinkedIn corporate jargon."
-      : "Translate the following LinkedIn corporate jargon text back into plain, normal English.";
+  let prompt = "";
 
-  const intensityInstruction = INTENSITY_INSTRUCTIONS[intensity];
+  if (mode === "plain_to_linkedin") {
+    const intensityInstruction = INTENSITY_INSTRUCTIONS[intensity];
+    prompt = `Translate the following text into a satirical LinkedIn post that mocks corporate jargon culture.
 
-  return `You are an expert at translating between plain English and LinkedIn corporate jargon.
+Situation: "${text}"
 
-${modeInstruction}
+Intensity: ${intensity}. ${intensityInstruction}
 
-Intensity level: ${intensity}. ${intensityInstruction}
+Rules:
+- Output ONLY the LinkedIn post text itself. No headers, no titles, no explanations, no commentary.
+- 2-3 short paragraphs separated by blank lines
+- End with 5-7 hashtags on their own line
+- Nothing before or after the post`;
+  } else {
+    prompt = `Strip this LinkedIn post down to exactly what it means in plain English. Be blunt and literal.
 
-Text to translate:
-"${text}"
+Text: "${text}"
 
-Provide only the translated text, nothing else. No explanations, no quotes, just the translation.`;
+Rules:
+- Output ONLY the plain English. No headers, no commentary, nothing extra.
+- 2-4 short punchy sentences. No filler.
+- Each real claim gets one honest sentence. Cut everything else.
+- No hashtags, no paragraphs, no softening`;
+  }
+
+  return prompt;
 }

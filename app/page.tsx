@@ -72,10 +72,16 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6 py-4">
           <div className="flex items-baseline justify-between">
             <div>
-              <h1 className="text-2xl font-serif font-bold text-[#1b1b1b]" style={{ fontFamily: "var(--font-serif)" }}>
-                LinkedIn Speak
+              <h1
+                className="text-2xl font-serif font-bold text-[#1b1b1b]"
+                style={{ fontFamily: "var(--font-serif)" }}
+              >
+                LinkedIn Translator
               </h1>
-              <p className="text-xs text-[#6b6b6b] mt-1">Translate professional nonsense. Or reverse the damage.</p>
+              <p className="text-xs text-[#6b6b6b] mt-1">
+                Translate English into professional nonsense. Or reverse the
+                damage.
+              </p>
             </div>
           </div>
         </div>

@@ -15,7 +15,7 @@ export async function translateText(
 
   const message = await anthropic.messages.create({
     model: "claude-haiku-4-5-20251001",
-    max_tokens: 1024,
+    max_tokens: 1500,
     messages: [
       {
         role: "user",
