@@ -16,6 +16,7 @@ interface TranslatorCardProps {
   onExampleClick: (text: string) => void;
   onTranslate: () => void;
   onRegenerate: () => void;
+  onSwap: () => void;
 }
 
 export function TranslatorCard({
@@ -31,6 +32,7 @@ export function TranslatorCard({
   onExampleClick,
   onTranslate,
   onRegenerate,
+  onSwap,
 }: TranslatorCardProps) {
   const [copied, setCopied] = useState(false);
   const [loadingMsg, setLoadingMsg] = useState(LOADING_MESSAGES[0]);
@@ -49,11 +51,11 @@ export function TranslatorCard({
   const isOverLimit = charCount > 3000;
   const isInputValid = inputText.trim().length > 0 && !isOverLimit;
 
-  const leftLabel = mode === "plain_to_linkedin" ? "Plain English" : "Corporate Speak";
-  const rightLabel = "LinkedIn Lingo";
+  const leftLabel = mode === "plain_to_linkedin" ? "Plain English" : "LinkedIn Lingo";
+  const rightLabel = mode === "plain_to_linkedin" ? "LinkedIn Lingo" : "Plain English";
 
   const handleSwap = () => {
-    onModeChange(mode === "plain_to_linkedin" ? "linkedin_to_plain" : "plain_to_linkedin");
+    onSwap();
   };
 
   const handleCopy = () => {
@@ -69,11 +71,7 @@ export function TranslatorCard({
         <div className="flex-1 px-6 py-4">
           <button
             onClick={() => onModeChange("plain_to_linkedin")}
-            className={`text-sm font-medium pb-2 border-b-2 transition-colors cursor-pointer ${
-              mode === "plain_to_linkedin"
-                ? "text-[#0077b5] border-[#0077b5]"
-                : "text-[#6b6b6b] border-transparent hover:text-[#1b1b1b]"
-            }`}
+            className="text-sm font-medium pb-2 border-b-2 border-[#0077b5] text-[#0077b5] cursor-pointer"
           >
             {leftLabel}
           </button>

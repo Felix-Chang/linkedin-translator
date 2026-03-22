@@ -61,6 +61,16 @@ export default function Home() {
     setError(null);
   };
 
+  const handleSwap = () => {
+    const newMode = mode === "plain_to_linkedin" ? "linkedin_to_plain" : "plain_to_linkedin";
+    if (outputText) {
+      setInputText(outputText);
+      setOutputText("");
+    }
+    setError(null);
+    setMode(newMode);
+  };
+
   const handleExampleClick = (example: string) => {
     setInputText(example);
   };
@@ -103,6 +113,7 @@ export default function Home() {
             onExampleClick={handleExampleClick}
             onTranslate={handleTranslate}
             onRegenerate={handleRegenerate}
+            onSwap={handleSwap}
           />
         </div>
       </main>
