@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { TranslationMode, IntensityLevel } from "@/lib/types";
 import { TranslatorCard } from "@/components/translator-card";
 
@@ -62,7 +63,8 @@ export default function Home() {
   };
 
   const handleSwap = () => {
-    const newMode = mode === "plain_to_linkedin" ? "linkedin_to_plain" : "plain_to_linkedin";
+    const newMode =
+      mode === "plain_to_linkedin" ? "linkedin_to_plain" : "plain_to_linkedin";
     if (outputText) {
       setInputText(outputText);
       setOutputText("");
@@ -81,17 +83,25 @@ export default function Home() {
       <header className="border-b border-[#e0e0e0] bg-white sticky top-0 z-10">
         <div className="max-w-6xl mx-auto px-6 py-4">
           <div className="flex items-baseline justify-between">
-            <div>
-              <h1
-                className="text-2xl font-serif font-bold text-[#1b1b1b]"
-                style={{ fontFamily: "var(--font-serif)" }}
-              >
-                LinkedIn Translator
-              </h1>
-              <p className="text-xs text-[#6b6b6b] mt-1">
-                Translate English into professional nonsense. Or reverse the
-                damage.
-              </p>
+            <div className="flex items-center gap-3">
+              <Image
+                src="/logo.png"
+                alt="LinkedIn Translator Logo"
+                width={100}
+                height={100}
+              />
+              <div>
+                <h1
+                  className="text-2xl font-serif font-bold text-[#1b1b1b]"
+                  style={{ fontFamily: "var(--font-serif)" }}
+                >
+                  LinkedIn Translator
+                </h1>
+                <p className="text-xs text-[#6b6b6b] mt-1">
+                  Translate English into professional nonsense. Or reverse the
+                  damage.
+                </p>
+              </div>
             </div>
           </div>
         </div>
