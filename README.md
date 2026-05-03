@@ -1,4 +1,4 @@
-# LinkedIn Speak 🎭
+# LinkedIn Speak
 
 **Translate professional thoughts into elite corporate jargon. Or reverse the damage.**
 
@@ -8,12 +8,12 @@ LinkedIn Speak is a satirical translation tool that converts plain English into 
 
 ## Features
 
-✨ **Bidirectional Translation**
+**Bidirectional Translation**
 
 - Plain English → LinkedIn Jargon
 - LinkedIn Jargon → Plain English
 
-🎚️ **5 Intensity Levels** (Plain English to LinkedIn only)
+**5 Intensity Levels** (Plain English to LinkedIn only)
 
 - **Subtle**: Professional polish
 - **Cringe**: Buzzwords and forced enthusiasm
@@ -21,7 +21,7 @@ LinkedIn Speak is a satirical translation tool that converts plain English into 
 - **Series A Founder**: Startup pitch vibes
 - **Fortune 500 Keynote**: Maximum corporate grandiosity
 
-📋 **Smart Features**
+**Smart Features**
 
 - Real-time character count (3000 char limit)
 - Example prompts for quick testing
@@ -29,7 +29,7 @@ LinkedIn Speak is a satirical translation tool that converts plain English into 
 - Regenerate for alternative translations
 - Loading state with rotating messages
 
-🎨 **Clean UI**
+**Clean UI**
 
 - Google Translate-style two-panel layout
 - Fast, responsive web app
@@ -168,5 +168,3 @@ Never commit `.env.local` or your API key to version control.
 - **Content moderation**: Claude has safety guidelines that may decline certain requests, even in satire context.
 
 ---
-
-Made with the help of Claude Code.
